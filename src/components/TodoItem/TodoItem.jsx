@@ -16,7 +16,6 @@ const Title = styled.span(props => {
     word-break: break-all;
     max-width: 70%;
     ${props.checked ? checkedCss : ''};
-    ${props.color ? `background-color: ${props.color};` : ''}
   `;
 })
 
@@ -24,6 +23,8 @@ const Delete = styled.span`
     display: inline-block;
     width: 13px;
     height: 13px;
+    background-color: white;
+    border-radius: 50%;
     background-image: url(/assets/images/png/delete.png);
     background-position: center;
     background-repeat: no-repeat;
@@ -52,9 +53,9 @@ export const TodoItem = ({id, title, checked, priority}) => {
     };
 
     return (
-        <TodoItemContainer>
+        <TodoItemContainer color={colorsByPriority[priorityState]}>
             <TodoItemCheckbox checked={checked} id={id}/>
-            <Title checked={checked} color={colorsByPriority[priorityState]}>
+            <Title checked={checked}>
                 {title}
             </Title>
             <TodoItemPrioritySelect value={priorityState}

@@ -8,7 +8,7 @@ import styled from "styled-components";
 
 const ButtonsContainer = styled.div`
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: stretch;
 `;
 
@@ -64,11 +64,10 @@ export const TodoItems = () => {
         <TodoItemsContainer>
             <SearchInput value={searchValue} setValue={setSearchValue}/>
             <ButtonsContainer>
-                <SortButton onClick={() => setSortDirection('asc')}>
-                    По возрастанию
-                </SortButton>
-                <SortButton onClick={() => setSortDirection('desc')}>
-                    По убыванию
+                <SortButton onClick={() => setSortDirection(
+                    sortDirection === 'desc' ? 'asc' : 'desc'
+                )}>
+                    {sortDirection === 'desc' ? 'По возрастанию' : 'По убыванию'}
                 </SortButton>
             </ButtonsContainer>
             {todoItemsElements}
