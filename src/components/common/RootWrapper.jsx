@@ -17,7 +17,7 @@ const Main = styled.div`
   height: 600px;
   background-color: #F4F4F4;
   box-shadow: 16px 12px 54px 0 rgba(0,0,0,0.2);
-  font-family: Inter;
+  font-family: Inter sans-serif;
   padding: 41px 38px 57px 38px;
   position: relative;
   color: #413F3F;

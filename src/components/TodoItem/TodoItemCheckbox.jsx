@@ -2,7 +2,7 @@ import styled, {css} from "styled-components";
 
 const disabledCss = css`
   background-color: #E2E2E2;
-  border-width: 0px;
+  border-width: 0;
 `
 
 const checkedCss = css`
