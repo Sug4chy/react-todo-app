@@ -13,7 +13,7 @@ const Title = styled.span(props => {
     return `
     font-size: 15px;
     word-break: break-all;
-    max-width: 275px;
+    max-width: 83%;
     ${props.checked ? checkedCss : ''};
   `;
 })
@@ -40,7 +40,7 @@ export const TodoItem = ({id, title, checked}) => {
 
     return (
         <TodoItemContainer>
-            <TodoItemCheckbox checked={checked}/>
+            <TodoItemCheckbox checked={checked} id={id}/>
             <Title checked={checked}>
                 {title}
             </Title>

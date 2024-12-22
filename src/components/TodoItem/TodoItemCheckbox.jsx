@@ -1,20 +1,19 @@
 import styled, {css} from "styled-components";
+import {useUpdateTodoItemChecked} from "../../data/hooks/useData";
 
 const disabledCss = css`
-  background-color: #E2E2E2;
-  border-width: 0;
+    background-color: #E2E2E2;
+    border-width: 0;
 `
-
 const checkedCss = css`
-  border-color: #B5B5BA;
-  background-color: #B5B5BA;
-  background-image: url(assets/images/svg/todo-done.svg);
-  background-position: center;
-  background-repeat: no-repeat;
+    border-color: #B5B5BA;
+    background-color: #B5B5BA;
+    background-image: url(assets/images/svg/todo-done.svg);
+    background-position: center;
+    background-repeat: no-repeat;
 `
-
 export const CheckboxContainer = styled.span(props => {
-  return `
+    return `
     display: inline-block;
     width: 20px;
     height: 20px;
@@ -26,7 +25,19 @@ export const CheckboxContainer = styled.span(props => {
   `;
 });
 
+export const TodoItemCheckbox = ({id, disabled, checked}) => {
+    const {mutate} = useUpdateTodoItemChecked();
 
-export const TodoItemCheckbox = ({disabled, checked}) => {
-  return <CheckboxContainer disabled={disabled} checked={checked} />
+    const onClick = (_) => {
+        if (!disabled) {
+            console.log(checked)
+            mutate({id: id, isChecked: !checked});
+        }
+    }
+
+    return <CheckboxContainer
+        disabled={disabled}
+        checked={checked}
+        onClick={onClick}
+    />
 }

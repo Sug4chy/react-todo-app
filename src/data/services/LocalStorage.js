@@ -46,5 +46,26 @@ export const LocalStorage = {
                 resolve();
             })
         })
+    },
+
+    updateTodoItemChecked: (id, isChecked) => {
+        return new Promise((resolve, _) => {
+            LocalStorage.getTodoItemsFromLocalStorage().then((todoItems) => {
+                localStorage.setItem(TODO_ITEMS_LOCAL_STORAGE_KEY,
+                    JSON.stringify(
+                        todoItems.map(
+                            (todoItem) => {
+                                if (todoItem.id === id) {
+                                    todoItem.isDone = isChecked;
+                                }
+
+                                return todoItem;
+                            }
+                        )
+                    )
+                );
+                resolve();
+            })
+        })
     }
 }
