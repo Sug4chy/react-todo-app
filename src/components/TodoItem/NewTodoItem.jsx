@@ -3,6 +3,7 @@ import {TodoItemContainer} from './TodoItemContainer';
 import {TodoItemCheckbox} from './TodoItemCheckbox';
 import styled from 'styled-components';
 import {useSaveNewTodoItem} from '../../data/hooks/useData';
+import {TodoItemPrioritySelect} from "./TodoItemPrioritySelect";
 
 
 const Input = styled.input`
@@ -19,6 +20,7 @@ export const NewTodoItem = () => {
     const {mutate, isPending, isSuccess} = useSaveNewTodoItem();
     const [value, setValue] = useState('');
     const inputRef = useRef();
+    const [priority, setPriority] = useState(1);
 
     useEffect(() => {
         if (!isPending && isSuccess) {
@@ -42,7 +44,11 @@ export const NewTodoItem = () => {
             return;
         }
 
-        mutate({title: value});
+        mutate({title: value, priority});
+    }
+
+    const onPriorityChange = (e) => {
+        setPriority(Number(e.target.value));
     }
 
     return (
@@ -56,6 +62,7 @@ export const NewTodoItem = () => {
                 placeholder='Write a task...'
                 disabled={isPending}
             />
+            <TodoItemPrioritySelect onChange={onPriorityChange}/>
         </TodoItemContainer>
     )
 }

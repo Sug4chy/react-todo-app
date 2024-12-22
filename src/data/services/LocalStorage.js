@@ -67,5 +67,26 @@ export const LocalStorage = {
                 resolve();
             })
         })
+    },
+
+    changePriority: (id, priority) => {
+        return new Promise((resolve, _) => {
+            LocalStorage.getTodoItemsFromLocalStorage().then((todoItems) => {
+                localStorage.setItem(TODO_ITEMS_LOCAL_STORAGE_KEY,
+                    JSON.stringify(
+                        todoItems.map(
+                            (todoItem) => {
+                                if (todoItem.id === id) {
+                                    todoItem.priority = priority;
+                                }
+
+                                return todoItem;
+                            }
+                        )
+                    )
+                );
+                resolve();
+            })
+        })
     }
 }

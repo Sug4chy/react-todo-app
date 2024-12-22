@@ -11,7 +11,7 @@ const checkedCss = css`
     background-image: url(assets/images/svg/todo-done.svg);
     background-position: center;
     background-repeat: no-repeat;
-`
+`;
 export const CheckboxContainer = styled.span(props => {
     return `
     display: inline-block;
@@ -30,7 +30,6 @@ export const TodoItemCheckbox = ({id, disabled, checked}) => {
 
     const onClick = (_) => {
         if (!disabled) {
-            console.log(checked)
             mutate({id: id, isChecked: !checked});
         }
     }
@@ -38,6 +37,5 @@ export const TodoItemCheckbox = ({id, disabled, checked}) => {
     return <CheckboxContainer
         disabled={disabled}
         checked={checked}
-        onClick={onClick}
-    />
+        onClick={onClick}/>
 }
